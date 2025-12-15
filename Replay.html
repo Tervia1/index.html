@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>La Station — Replay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --vert-pastel: #B8F2D0;
+      --vert-fonce: #4CA778;
+      --texte: #1f1f1f;
+      --blanc: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--vert-pastel);
+      color: var(--texte);
+      min-height: 100vh;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: var(--vert-fonce);
+      text-transform: lowercase;
+    }
+
+    .page-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 25px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .show-card {
+      background: var(--blanc);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      text-align: left;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .show-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .show-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--vert-fonce);
+      margin-bottom: 5px;
+    }
+
+    .show-info {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    /* Zone replay */
+    #replay-section {
+      display: none;
+      max-width: 600px;
+      margin: 30px auto 0;
+      text-align: left;
+    }
+
+    .replay-item {
+      background: var(--blanc);
+      padding: 15px;
+      border-radius: 16px;
+      margin-bottom: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .replay-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--vert-fonce);
+    }
+
+    .replay-date {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+
+    .btn-back {
+      display: inline-block;
+      margin-top: 30px;
+      background: var(--blanc);
+      padding: 12px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--vert-fonce);
+      font-weight: 600;
+      border: 1px solid #ddd;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-back:hover {
+      background: #eafff3;
+      border-color: var(--vert-fonce);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="logo">la station</div>
+
+  <div class="page-title">Replay</div>
+  <div class="subtitle">Choisis une émission pour voir les replays.</div>
+
+  <!-- LISTE DES ÉMISSIONS -->
+  <div id="shows-list" class="grid">
+
+    <div class="show-card" onclick="openReplay('Le Morning Station', 'Lundi – Vendredi')">
+      <div class="show-title">Le Morning Station</div>
+      <div class="show-info">Diffusé : Lundi – Vendredi</div>
+    </div>
+
+    <div class="show-card" onclick="openReplay('Station Mix', 'Vendredi & Samedi')">
+      <div class="show-title">Station Mix</div>
+      <div class="show-info">Diffusé : Vendredi & Samedi</div>
+    </div>
+
+    <div class="show-card" onclick="openReplay('Découvertes Station', 'Mercredi')">
+      <div class="show-title">Découvertes Station</div>
+      <div class="show-info">Diffusé : Mercredi</div>
+    </div>
+
+  </div>
+
+  <!-- ✅ BOUTON RETOUR À L’ACCUEIL EN DESSOUS -->
+  <a href="La Station.html" class="btn-back">⬅ Retour à l'accueil</a>
+
+  <!-- SECTION REPLAY -->
+  <div id="replay-section">
+    <h2 id="replay-title" style="font-size:22px; font-weight:700; margin-bottom:5px;"></h2>
+    <div id="replay-days" style="opacity:0.7; margin-bottom:20px;"></div>
+
+    <div id="replay-list"></div>
+
+    <!-- BOUTON RETOUR AUX ÉMISSIONS -->
+    <div class="btn-back" onclick="closeReplay()">⬅ Retour aux émissions</div>
+  </div>
+
+  <script>
+    function openReplay(name, days) {
+      document.getElementById("shows-list").style.display = "none";
+      document.getElementById("replay-section").style.display = "block";
+
+      document.getElementById("replay-title").textContent = name;
+      document.getElementById("replay-days").textContent = "Diffusé : " + days;
+
+      const fakeReplays = `
+        <div class="replay-item">
+          <div class="replay-title">Émission du 12 janvier</div>
+          <div class="replay-date">Replay bientôt disponible</div>
+        </div>
+        <div class="replay-item">
+          <div class="replay-title">Émission du 11 janvier</div>
+          <div class="replay-date">Replay bientôt disponible</div>
+        </div>
+        <div class="replay-item">
+          <div class="replay-title">Émission du 10 janvier</div>
+          <div class="replay-date">Replay bientôt disponible</div>
+        </div>
+      `;
+
+      document.getElementById("replay-list").innerHTML = fakeReplays;
+    }
+
+    function closeReplay() {
+      document.getElementById("replay-section").style.display = "none";
+      document.getElementById("shows-list").style.display = "grid";
+    }
+  </script>
+
+</body>
+</html>

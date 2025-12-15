@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>La Station — Émissions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --vert-pastel: #B8F2D0;
+      --vert-fonce: #4CA778;
+      --texte: #1f1f1f;
+      --blanc: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--vert-pastel);
+      color: var(--texte);
+      min-height: 100vh;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: var(--vert-fonce);
+      text-transform: lowercase;
+    }
+
+    .page-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 25px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .show-card {
+      background: var(--blanc);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      text-align: left;
+    }
+
+    .show-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--vert-fonce);
+      margin-bottom: 5px;
+    }
+
+    .show-info {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    .show-desc {
+      font-size: 14px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .btn-back {
+      display: inline-block;
+      margin-top: 30px;
+      background: var(--blanc);
+      padding: 12px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--vert-fonce);
+      font-weight: 600;
+      border: 1px solid #ddd;
+      transition: 0.2s;
+    }
+
+    .btn-back:hover {
+      background: #eafff3;
+      border-color: var(--vert-fonce);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="logo">la station</div>
+
+  <div class="page-title">Les Émissions</div>
+  <div class="subtitle">Découvre les programmes qui rythment La Station.</div>
+
+  <div class="grid">
+
+    <!-- ÉMISSION 1 -->
+    <div class="show-card">
+      <div class="show-title">Le Morning Station</div>
+      <div class="show-info">🕒 Lundi–Vendredi · 7h–9h · 🎙️ Alex</div>
+      <div class="show-desc">
+        Réveille-toi avec de la bonne humeur, tous les styles de musique et les infos essentielles.
+      </div>
+    </div>
+
+    <!-- ÉMISSION 2 -->
+    <div class="show-card">
+      <div class="show-title">Station Mix</div>
+      <div class="show-info">🕒 Vendredi & Samedi · 21h–00h · 🎧 DJs invités</div>
+      <div class="show-desc">
+        Un mix explosif de tous les styles : électro, pop, rap, remixes et classiques revisités.
+      </div>
+    </div>
+
+    <!-- ÉMISSION 3 -->
+    <div class="show-card">
+      <div class="show-title">Découvertes Station</div>
+      <div class="show-info">🕒 Mercredi · 18h–20h · 🎙️ Emma</div>
+      <div class="show-desc">
+        Une émission dédiée aux nouveaux talents, à tous les styles et à toutes les scènes.
+      </div>
+    </div>
+
+  </div>
+
+  <a href="La Station.html" class="btn-back">⬅ Retour à l'accueil</a>
+
+  <footer>© <span id="year"></span> La Station</footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

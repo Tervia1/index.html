@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>La Station — Podcasts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --vert-pastel: #B8F2D0;
+      --vert-fonce: #4CA778;
+      --texte: #1f1f1f;
+      --blanc: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--vert-pastel);
+      color: var(--texte);
+      min-height: 100vh;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: var(--vert-fonce);
+      text-transform: lowercase;
+    }
+
+    .page-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 25px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .podcast-card {
+      background: var(--blanc);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      text-align: left;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .podcast-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .podcast-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--vert-fonce);
+      margin-bottom: 5px;
+    }
+
+    .podcast-info {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    /* Zone épisodes */
+    #episodes-section {
+      display: none;
+      max-width: 600px;
+      margin: 30px auto 0;
+      text-align: left;
+    }
+
+    .episode-item {
+      background: var(--blanc);
+      padding: 15px;
+      border-radius: 16px;
+      margin-bottom: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .episode-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--vert-fonce);
+    }
+
+    .episode-date {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+
+    .btn-back {
+      display: inline-block;
+      margin-top: 30px;
+      background: var(--blanc);
+      padding: 12px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--vert-fonce);
+      font-weight: 600;
+      border: 1px solid #ddd;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-back:hover {
+      background: #eafff3;
+      border-color: var(--vert-fonce);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="logo">la station</div>
+
+  <div class="page-title">Podcasts</div>
+  <div class="subtitle">Retrouve ici tous les podcasts de La Station.</div>
+
+  <!-- LISTE DES PODCASTS -->
+  <div id="podcast-list" class="grid">
+
+    <div class="podcast-card" onclick="openPodcast('Le Debrief Station')">
+      <div class="podcast-title">Le Debrief Station</div>
+      <div class="podcast-info">Discussions, actu, musique</div>
+    </div>
+
+    <div class="podcast-card" onclick="openPodcast('Station Stories')">
+      <div class="podcast-title">Station Stories</div>
+      <div class="podcast-info">Histoires, moments, coulisses</div>
+    </div>
+
+    <div class="podcast-card" onclick="openPodcast('Les Chroniques de La Station')">
+      <div class="podcast-title">Les Chroniques de La Station</div>
+      <div class="podcast-info">Culture, découvertes, interviews</div>
+    </div>
+
+  </div>
+
+  <!-- BOUTON RETOUR ACCUEIL -->
+  <a href="La Station.html" class="btn-back">⬅ Retour à l'accueil</a>
+
+  <!-- SECTION ÉPISODES -->
+  <div id="episodes-section">
+    <h2 id="podcast-title" style="font-size:22px; font-weight:700; margin-bottom:5px;"></h2>
+    <div id="episodes-list"></div>
+
+    <!-- BOUTON RETOUR AUX PODCASTS -->
+    <div class="btn-back" onclick="closePodcast()">⬅ Retour aux podcasts</div>
+  </div>
+
+  <script>
+    function openPodcast(name) {
+      document.getElementById("podcast-list").style.display = "none";
+      document.getElementById("episodes-section").style.display = "block";
+
+      document.getElementById("podcast-title").textContent = name;
+
+      // Faux épisodes pour l'instant
+      const fakeEpisodes = `
+        <div class="episode-item">
+          <div class="episode-title">Épisode du 12 janvier</div>
+          <div class="episode-date">Disponible bientôt</div>
+        </div>
+        <div class="episode-item">
+          <div class="episode-title">Épisode du 5 janvier</div>
+          <div class="episode-date">Disponible bientôt</div>
+        </div>
+        <div class="episode-item">
+          <div class="episode-title">Épisode du 29 décembre</div>
+          <div class="episode-date">Disponible bientôt</div>
+        </div>
+      `;
+
+      document.getElementById("episodes-list").innerHTML = fakeEpisodes;
+    }
+
+    function closePodcast() {
+      document.getElementById("episodes-section").style.display = "none";
+      document.getElementById("podcast-list").style.display = "grid";
+    }
+  </script>
+
+</body>
+</html>

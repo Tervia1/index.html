@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>La Station — Accueil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --vert-pastel: #B8F2D0;
+      --vert-fonce: #4CA778;
+      --texte: #1f1f1f;
+      --blanc: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--vert-pastel);
+      color: var(--texte);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .logo {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--vert-fonce);
+      text-transform: lowercase;
+    }
+
+    /* Bloc actualités */
+    .actus-box {
+      background: var(--blanc);
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    .actus-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--vert-fonce);
+      margin-bottom: 10px;
+    }
+
+    .actu-item {
+      font-size: 14px;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    /* Boutons */
+    .btn {
+      display: block;
+      background: var(--blanc);
+      padding: 15px 20px;
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--vert-fonce);
+      font-weight: 600;
+      border: 1px solid #ddd;
+      transition: 0.2s;
+      margin: 10px 0;
+      max-width: 300px;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: #eafff3;
+      border-color: var(--vert-fonce);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="logo">la station</div>
+
+  <!-- ✅ Bloc Actualités importantes -->
+  <div class="actus-box">
+    <div class="actus-title">Actualités importantes</div>
+
+    <div class="actu-item">• Mise à jour du site : nouvelles pages Replay & Podcasts disponibles.</div>
+    <div class="actu-item">• Lancement officiel de La Station prévu prochainement.</div>
+    <div class="actu-item">• Nouveaux jingles en préparation pour la radio.</div>
+  </div>
+
+  <!-- ✅ Boutons principaux -->
+  <a href="direct.html" class="btn">🎧 Écouter le direct</a>
+  <a href="replay.html" class="btn">⏪ Replay</a>
+  <a href="podcast.html" class="btn">🎙️ Podcasts</a>
+  <a href="émissions.html" class="btn">📻 Émissions</a>
+
+  <footer>© <span id="year"></span> La Station</footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
